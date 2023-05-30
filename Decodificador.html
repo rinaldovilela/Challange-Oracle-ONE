@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Codificador e Decodificador de Texto</title>
+  <link rel="stylesheet"  href="decodificador.css">
+  <script>
+    function codificarTexto() {
+      let textoOriginal = document.getElementById('textoOriginal').value;
+      let textoCodificado = '';
+
+      for (let i = 0; i < textoOriginal.length; i++) {
+        // Obter o código ASCII do caractere atual
+        let codigoAscii = textoOriginal.charCodeAt(i);
+
+        // Incrementar o código ASCII em 1 para codificar o caractere
+        let caractereCodificado = String.fromCharCode(codigoAscii + 3);
+
+        // Adicionar o caractere codificado ao texto codificado
+        textoCodificado += caractereCodificado;
+      }
+
+      document.getElementById('textoCodificado').textContent = textoCodificado;
+    }
+
+    function decodificarTexto() {
+      let textoCodificado = document.getElementById('textoCodificadoDecodificar').value;
+      let textoDecodificado = '';
+
+      for (let i = 0; i < textoCodificado.length; i++) {
+        // Obter o código ASCII do caractere atual
+        let codigoAscii = textoCodificado.charCodeAt(i);
+
+        // Decrementar o código ASCII em 1 para obter o caractere original
+        let caractereOriginal = String.fromCharCode(codigoAscii - 3);
+
+        // Adicionar o caractere original ao texto decodificado
+        textoDecodificado += caractereOriginal;
+      }
+
+      document.getElementById('textoDecodificado').textContent = textoDecodificado;
+    }
+  </script>
+</head>
+<body>
+  <h1>Codificador e Decodificador de Texto</h1>
+
+  <div class="codificador">
+    <h2>Codificador</h2>
+    <label for="textoOriginal">Texto Original:</label>
+    <input type="text" id="textoOriginal">
+
+  <button onclick="codificarTexto()">Codificar</button>
+  
+
+  <h3>Texto Codificado:</h3>
+  <p id="textoCodificado"></p>
+  </div>
+
+
+  <div class="decodificador">
+  <h2>Decodificador</h2>
+  <label for="textoCodificadoDecodificar">Texto Codificado:</label>
+  <input type="text" id="textoCodificadoDecodificar">
+
+  <button onclick="decodificarTexto()">Decodificar</button>
+
+  <h3>Texto Decodificado:</h3>
+  <p id="textoDecodificado"></p>
+</div>
+</body>
+</html>
